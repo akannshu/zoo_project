@@ -1,0 +1,87 @@
+package com.zoo;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Table(name = "animal_record")
+@Entity
+
+public class Animal implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer animalId;
+	private String type;
+	private Integer totalNumber;
+	@OneToOne(mappedBy = "animal") //Reverse Owner
+	private Animal animal;
+
+	public Animal() {
+
+	}
+
+	public Animal(String type, Integer totalNumber, Animal animal) {
+
+		this.type = type;
+		this.totalNumber = totalNumber;
+		this.animal = animal;
+	}
+
+	public Animal(Integer animalId, String type, Integer totalNumber, Animal animal) {
+		super();
+		this.animalId = animalId;
+		this.type = type;
+		this.totalNumber = totalNumber;
+		this.animal = animal;
+	}
+
+	public Integer getAnimalId() {
+		return animalId;
+	}
+
+	public void setAnimalId(Integer animalId) {
+		this.animalId = animalId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getTotalNumber() {
+		return totalNumber;
+	}
+
+	public void setTotalNumber(Integer totalNumber) {
+		this.totalNumber = totalNumber;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Animal [animalId=" + animalId + ", type=" + type + ", totalNumber=" + totalNumber + ", animal=" + animal
+				+ "]";
+	}
+
+}

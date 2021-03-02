@@ -1,0 +1,33 @@
+package com.zoo.dao;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="in_house_vet")
+@DiscriminatorValue("IN_VET")
+public class ExternalVet extends Vet{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private Double visitngFees;
+	
+	public ExternalVet() {}
+
+	public ExternalVet(String name, String qualification, Double visitngFees) {
+		super(name, qualification);
+		this.visitngFees = visitngFees;
+	}
+	
+	public Double getSalary() {
+		return visitngFees;
+	}
+
+	public void setSalary(Double visitngFees) {
+		this.visitngFees = visitngFees;
+	}
+	
+	
+}
+

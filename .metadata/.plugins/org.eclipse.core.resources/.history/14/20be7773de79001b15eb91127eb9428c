@@ -1,0 +1,22 @@
+package com.zoo.dao;
+
+import javax.transaction.Transaction;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zoo.factory.HibernateSessionFactory;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		SessionFactory factory = HibernateSessionFactory.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.getTransaction().begin();
+		
+		Category category = new Category();
+		session.save(category);
+		session.getTransaction().commit();
+	}
+}

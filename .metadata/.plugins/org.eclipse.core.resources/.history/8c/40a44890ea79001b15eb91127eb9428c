@@ -1,0 +1,14 @@
+package com.zoo.dao;
+
+import java.util.jar.Attributes.Name;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="in_house_vet")
+@DiscriminatorValue("IN_VET")
+public class InHouseVet extends Vet{
+
+}

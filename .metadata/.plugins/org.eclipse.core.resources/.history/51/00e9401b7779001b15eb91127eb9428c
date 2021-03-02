@@ -1,0 +1,44 @@
+package com.zoo;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
+@Table(name = "animal_record")
+@Entity
+
+public class Animal implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer animalId;
+	private String type;
+	private Integer totalNumber;
+	@OneToOne(mappedBy = "animal") // Reverse Owner
+	private Cage cage;
+	@ManyToOne
+	@JoinColumn(name = "category_fk_id", nullable = false)
+	private Category category;
+
+	public Animal() {
+
+	}
+
+	public Animal(String type, Integer totalNumber, Cage cage) {
+
+		this.type = type;
+		this.totalNumber = totalNumber;
+		this.cage = cage;
+	}
+
+}

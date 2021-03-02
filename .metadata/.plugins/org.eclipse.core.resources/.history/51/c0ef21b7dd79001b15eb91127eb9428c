@@ -1,0 +1,22 @@
+package com.zoo.dao;
+
+import javax.transaction.Transaction;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zoo.factory.HibernateSessionFactory;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		SessionFactory factory = HibernateSessionFactory.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		
+		Animal lion = new Animal("WILD", 50);
+		Animal zebra = new Animal("WILD",40);
+		
+		Category category = new Category()
+	}
+}
